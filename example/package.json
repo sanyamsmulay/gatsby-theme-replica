@@ -10,11 +10,12 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "gatsby": "^2.24.63",
-    "gatsby-plugin-google-gtag": "^2.1.13",
+    "gatsby": "^5.9.0",
+    "gatsby-plugin-disqus": "^1.2.6",
+    "gatsby-plugin-google-gtag": "^5.9.0",
     "gatsby-theme-replica": "^0.0.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "ts-node": "^9.0.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "ts-node": "^10.9.1"
   }
 }
