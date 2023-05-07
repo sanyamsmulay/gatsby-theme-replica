@@ -4,6 +4,25 @@ Because we love octocat! :two_hearts:
 
 This theme is still in a very early stage, issues & Contributions are welcome!
 
+## Post upgrade to all latest packages
+
+### Status: 
+
+- all plugins and dependencies updated to latest ones
+- home page loads
+- there some unhandled runtime errors
+- there are lot of build time warnings
+
+### TODOs
+
+- fix runtime error
+- update all the graphql queries to the latest format from the deprecated format
+- fix css parts that are currently commented out (are marked with TODOs)
+- attend to warnings at build time
+  - triage and fix 
+- attend to TODOs marked in code 
+  - triage and fix
+
 ## Quick Start
 
 Please use `yarn` as there is no `npm.lock` yet

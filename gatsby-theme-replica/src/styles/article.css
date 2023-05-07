@@ -56,10 +56,10 @@ article > h6 {
 article > p {
   /*@apply mb-4;*/
 }
-
-article a:link{
+/* // TODO: fix error here due to @apply */
+/* article a:link{
   @apply text-blue;
-}
+} */
 
 article ul,
 article ol {

@@ -5,6 +5,7 @@ const { slugify } = require('./src/utils/slugify');
 const { UNCATEGORIZED, CATEGORY_DIR, TAG_DIR } = require('./src/constants/key');
 const DEFAULT_CONTENT_PATH = 'content';
 const { getDateString } = require('./_gatsby/utils/date');
+const readingTime = require(`reading-time`);
 
 // Make sure the content directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
@@ -35,7 +36,29 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       value: new Date(node.frontmatter.date).getFullYear(),
     });
+
+    createNodeField({
+      node,
+      name: `timeToRead`,
+      value: readingTime(node.body),
+    });
   }
+};
+
+// adding slug and year to base of mdx as well to keep compatibility with the usage in templates
+// TODO: phase this out; try to adhere to the plugin standard to allow for wider compatibility
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+
+  createTypes(`#graphql
+    type Mdx implements Node {
+      slug: String @proxy(from: "fields.slug")
+      year: Int @proxy(from: "fields.year")
+      # You can also use other keys from fields.timeToRead if you don't want "minutes"
+      timeToRead: Float @proxy(from: "fields.timeToRead.minutes")
+      wordCount: Int @proxy(from: "fields.timeToRead.words")
+    }
+  `);
 };
 
 const pages = [
@@ -60,10 +83,10 @@ const pages = [
 exports.createPages = async ({ actions, graphql, reporter }) => {
   // Exclude README.md, it's reserved to be a section in overview page
   const result = await graphql(`
-    query {
+    {
       allMdx(
         filter: { slug: { ne: "README" } }
-        sort: { fields: frontmatter___date, order: ASC }
+        sort: { frontmatter: { date: ASC } }
       ) {
         nodes {
           id
@@ -76,22 +99,19 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
-
       site {
         pathPrefix
         siteMetadata {
           siteUrl
         }
       }
-
       tags: allMdx {
-        group(field: frontmatter___tags) {
+        group(field: { frontmatter: { tags: SELECT } }) {
           fieldValue
         }
       }
-
       categories: allMdx {
-        group(field: frontmatter___category) {
+        group(field: { frontmatter: { category: SELECT } }) {
           fieldValue
         }
       }
@@ -202,4 +222,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   } catch (e) {
     console.error(e);
   }
+};
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      fallback: {
+        path: require.resolve('path-browserify'), // TODO check if this is actually needed.. or just can be set to false
+      },
+    },
+  });
 };

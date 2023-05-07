@@ -1,12 +1,14 @@
-import { MDXProvider } from '@mdx-js/react';
-import Highlight, { defaultProps } from 'prism-react-renderer';
-import githubTheme from 'prism-react-renderer/themes/github';
+import { MDXProvider } from '@mdx-js/react'; // check if this should only be a devDependency
+import Highlight, { defaultProps, themes } from 'prism-react-renderer';
+// import githubTheme from 'prism-react-renderer';
 import React from 'react';
 
 import Gist from '../src/components/plugin/Gist';
 import JsFiddle from '../src/components/plugin/JsFiddle';
 import getHeadingInnerText from '../src/utils/getHeadingInnerText';
 import { slugify } from '../src/utils/slugify';
+
+const githubTheme = themes.github;
 
 const getHeadingWithId = () => {
   return new Array(6).fill(0).reduce((acc, _, index) => {
