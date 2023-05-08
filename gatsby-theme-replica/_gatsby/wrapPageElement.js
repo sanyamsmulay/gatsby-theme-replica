@@ -1,5 +1,5 @@
 import { MDXProvider } from '@mdx-js/react'; // check if this should only be a devDependency
-import Highlight, { defaultProps, themes } from 'prism-react-renderer';
+import { Highlight, defaultProps, themes } from 'prism-react-renderer';
 // import githubTheme from 'prism-react-renderer';
 import React from 'react';
 

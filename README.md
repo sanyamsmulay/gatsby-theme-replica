@@ -10,18 +10,25 @@ This theme is still in a very early stage, issues & Contributions are welcome!
 
 - all plugins and dependencies updated to latest ones
 - home page loads
-- there some unhandled runtime errors
+- all other pages load without errors
+- the theme is essentially usable to be used for blogging
+- disqus is commented out in the article page template 
+- no known runtime errors so far
 - there are lot of build time warnings
 
 ### TODOs
 
-- fix runtime error
+- try out the plugin for my blog and fix issues that may arise
+- enable disqus for comments / questions / junta /janata participation
+- rss is not working 
+- images / svgs don't seem to work as of now
 - update all the graphql queries to the latest format from the deprecated format
 - fix css parts that are currently commented out (are marked with TODOs)
 - attend to warnings at build time
   - triage and fix 
 - attend to TODOs marked in code 
   - triage and fix
+- add search and pagination to archives, categories and tags pages
 
 ## Quick Start
 

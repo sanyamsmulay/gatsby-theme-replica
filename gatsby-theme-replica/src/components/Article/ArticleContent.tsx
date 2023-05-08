@@ -1,13 +1,14 @@
-import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { MDXProvider } from '@mdx-js/react';
 import React, { FC } from 'react';
 
-export interface Props {
-  body: string;
-}
 
-const ArticleContent: FC<Props> = ({ body }) => (
+// export interface Props {
+//   excerpt: string;
+// }
+
+const ArticleContent: FC<any> = ({ children }) => (
   <article className={`border-b md:border md:rounded-b-md md:px-8 md:py-4`}>
-    <MDXRenderer>{body}</MDXRenderer>
+    <MDXProvider>{children}</MDXProvider>
   </article>
 );
 

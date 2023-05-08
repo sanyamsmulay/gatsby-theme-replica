@@ -60,12 +60,13 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-disqus`,
-      options: {
-        shortname: `hiitea-tech`,
-      },
-    },
+    // TODO: enable later
+    // { // disabled for now
+    //   resolve: `gatsby-plugin-disqus`,
+    //   options: {
+    //     shortname: `hiitea-tech`,
+    //   },
+    // },
     {
       resolve: 'gatsby-theme-replica',
       options: {
