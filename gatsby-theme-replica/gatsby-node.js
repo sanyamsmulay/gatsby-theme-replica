@@ -168,36 +168,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         : null;
 
       const pagePathWithoutPrefix = `${post.fields.slug}`;
-      
-      // console.log(
-      //   'trying component path: ',
-      //   `${path.resolve(
-      //     '/home/sanyam/projects/personal/base_gatsby_blog_github_theme/gatsby-theme-replica/gatsby-theme-replica/src/templates/post.tsx'
-      //   )}?__contentFilePath=${post.internal.contentFilePath}`
-      // );
+
       console.log(
         'trying component path: ',
         `${require.resolve('./src/templates/post.tsx')}?__contentFilePath=${
           post.internal.contentFilePath
         }`
       );
-      // console.log(
-      //   'are equal stings',
-      //   `trying component path: ${require.resolve('./src/templates/post.tsx')}?__contentFilePath=${
-      //     post.internal.contentFilePath
-      //   }` === `trying component path: ${path.resolve('/home/sanyam/projects/personal/base_gatsby_blog_github_theme/gatsby-theme-replica/gatsby-theme-replica/src/templates/post.tsx')}?__contentFilePath=${
-      //     post.internal.contentFilePath
-      //   }`
-      // );
-      
+
       actions.createPage({
         path: pagePathWithoutPrefix,
-        // component: require.resolve('./src/templates/post.tsx'),
-        // component: post.internal.contentFilePath,
-        // TODO: make post template path a const at the top of the file
-        // component: `${path.resolve(
-        //   '/home/sanyam/projects/personal/base_gatsby_blog_github_theme/gatsby-theme-replica/gatsby-theme-replica/src/templates/post.tsx'
-        // )}?__contentFilePath=${post.internal.contentFilePath}`,
         component: `${require.resolve(
           './src/templates/post.tsx'
         )}?__contentFilePath=${post.internal.contentFilePath}`,

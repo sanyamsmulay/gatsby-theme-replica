@@ -16,7 +16,7 @@ const TableOfContent: FC<{ items?: TocItem[]; level?: number }> = ({
                 adding a - in front of every link
              */}
             <a
-              href={item.url.split('#').join('#-')}
+              href={item.url.replace('#', '#-')}
               className={isTopLevelWithChildren ? `text-base` : ''}
             >
               {item.title}
