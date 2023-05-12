@@ -12,8 +12,11 @@ const TableOfContent: FC<{ items?: TocItem[]; level?: number }> = ({
         const isTopLevelWithChildren = level === 0 && item.items;
         return (
           <li key={item.url}>
+            {/* TODO this has been done to accommodate the quirk of gatsby-plugin-mdx 
+                adding a - in front of every link
+             */}
             <a
-              href={item.url}
+              href={item.url.split('#').join('#-')}
               className={isTopLevelWithChildren ? `text-base` : ''}
             >
               {item.title}
