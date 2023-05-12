@@ -8,9 +8,9 @@
   transition: width 200ms ease-in;
 }
 
-/* a {
-  @apply text-blue;
-} */
+a {
+  @apply text-blue-400;
+}
 
 a:hover {
   text-decoration: underline;

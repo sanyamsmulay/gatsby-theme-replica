@@ -57,9 +57,9 @@ article > p {
   /*@apply mb-4;*/
 }
 /* // TODO: fix error here due to @apply */
-/* article a:link{
-  @apply text-blue;
-} */
+article a:link{
+  @apply text-blue-600;
+}
 
 article ul,
 article ol {
