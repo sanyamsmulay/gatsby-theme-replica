@@ -7,7 +7,7 @@ const TableOfContent: FC<{ items?: TocItem[]; level?: number }> = ({
   level = 0,
 }) => {
   return items && items.length > 0 ? (
-    <ul className={`text-sm mb-2 ${level > 0 ? 'ml-5 list-circle' : ''}`}>
+    <ul className={`text-sm mb-2 ${level==0 ? 'overflow-auto max-h-screen': ''} ${level > 0 ? 'ml-5 list-circle' : ''}`}>
       {items.map((item) => {
         const isTopLevelWithChildren = level === 0 && item.items;
         return (
